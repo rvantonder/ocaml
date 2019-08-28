@@ -9,12 +9,14 @@ utils/build_path_prefix_map.cmx : \
     utils/build_path_prefix_map.cmi
 utils/build_path_prefix_map.cmi :
 utils/ccomp.cmo : \
+    utils/profile.cmi \
     utils/misc.cmi \
     utils/load_path.cmi \
     utils/config.cmi \
     utils/clflags.cmi \
     utils/ccomp.cmi
 utils/ccomp.cmx : \
+    utils/profile.cmx \
     utils/misc.cmx \
     utils/load_path.cmx \
     utils/config.cmx \
@@ -51,6 +53,11 @@ utils/consistbl.cmx : \
     utils/consistbl.cmi
 utils/consistbl.cmi : \
     utils/misc.cmi
+utils/domainstate.cmo : \
+    utils/domainstate.cmi
+utils/domainstate.cmx : \
+    utils/domainstate.cmi
+utils/domainstate.cmi :
 utils/identifiable.cmo : \
     utils/misc.cmi \
     utils/identifiable.cmi
@@ -1515,7 +1522,6 @@ typing/typetexp.cmo : \
     utils/misc.cmi \
     parsing/longident.cmi \
     parsing/location.cmi \
-    typing/includemod.cmi \
     typing/env.cmi \
     typing/ctype.cmi \
     utils/clflags.cmi \
@@ -1536,7 +1542,6 @@ typing/typetexp.cmx : \
     utils/misc.cmx \
     parsing/longident.cmx \
     parsing/location.cmx \
-    typing/includemod.cmx \
     typing/env.cmx \
     typing/ctype.cmx \
     utils/clflags.cmx \
@@ -1552,7 +1557,6 @@ typing/typetexp.cmi : \
     parsing/parsetree.cmi \
     parsing/longident.cmi \
     parsing/location.cmi \
-    typing/includemod.cmi \
     typing/env.cmi \
     typing/ctype.cmi \
     parsing/asttypes.cmi
@@ -2274,7 +2278,9 @@ asmcomp/emit.cmo : \
     utils/misc.cmi \
     asmcomp/mach.cmi \
     asmcomp/linearize.cmi \
+    lambda/lambda.cmi \
     asmcomp/emitaux.cmi \
+    utils/domainstate.cmi \
     lambda/debuginfo.cmi \
     utils/config.cmi \
     middle_end/compilenv.cmi \
@@ -2294,7 +2300,9 @@ asmcomp/emit.cmx : \
     utils/misc.cmx \
     asmcomp/mach.cmx \
     asmcomp/linearize.cmx \
+    lambda/lambda.cmx \
     asmcomp/emitaux.cmx \
+    utils/domainstate.cmx \
     lambda/debuginfo.cmx \
     utils/config.cmx \
     middle_end/compilenv.cmx \
@@ -2354,6 +2362,7 @@ asmcomp/linearize.cmo : \
     asmcomp/proc.cmi \
     utils/misc.cmi \
     asmcomp/mach.cmi \
+    lambda/lambda.cmi \
     lambda/debuginfo.cmi \
     utils/config.cmi \
     asmcomp/cmm.cmi \
@@ -2363,6 +2372,7 @@ asmcomp/linearize.cmx : \
     asmcomp/proc.cmx \
     utils/misc.cmx \
     asmcomp/mach.cmx \
+    lambda/lambda.cmx \
     lambda/debuginfo.cmx \
     utils/config.cmx \
     asmcomp/cmm.cmx \
@@ -2370,6 +2380,7 @@ asmcomp/linearize.cmx : \
 asmcomp/linearize.cmi : \
     asmcomp/reg.cmi \
     asmcomp/mach.cmi \
+    lambda/lambda.cmi \
     lambda/debuginfo.cmi \
     asmcomp/cmm.cmi
 asmcomp/linscan.cmo : \
@@ -2407,6 +2418,7 @@ asmcomp/mach.cmo : \
     asmcomp/debug/reg_with_debug_info.cmi \
     asmcomp/debug/reg_availability_set.cmi \
     asmcomp/reg.cmi \
+    lambda/lambda.cmi \
     lambda/debuginfo.cmi \
     asmcomp/cmm.cmi \
     middle_end/backend_var.cmi \
@@ -2416,6 +2428,7 @@ asmcomp/mach.cmx : \
     asmcomp/debug/reg_with_debug_info.cmx \
     asmcomp/debug/reg_availability_set.cmx \
     asmcomp/reg.cmx \
+    lambda/lambda.cmx \
     lambda/debuginfo.cmx \
     asmcomp/cmm.cmx \
     middle_end/backend_var.cmx \
@@ -2424,6 +2437,7 @@ asmcomp/mach.cmx : \
 asmcomp/mach.cmi : \
     asmcomp/debug/reg_availability_set.cmi \
     asmcomp/reg.cmi \
+    lambda/lambda.cmi \
     lambda/debuginfo.cmi \
     asmcomp/cmm.cmi \
     middle_end/backend_var.cmi \
@@ -2449,16 +2463,16 @@ asmcomp/printcmm.cmi : \
     asmcomp/cmm.cmi
 asmcomp/printlinear.cmo : \
     asmcomp/printmach.cmi \
-    asmcomp/printcmm.cmi \
     asmcomp/mach.cmi \
     asmcomp/linearize.cmi \
+    lambda/lambda.cmi \
     lambda/debuginfo.cmi \
     asmcomp/printlinear.cmi
 asmcomp/printlinear.cmx : \
     asmcomp/printmach.cmx \
-    asmcomp/printcmm.cmx \
     asmcomp/mach.cmx \
     asmcomp/linearize.cmx \
+    lambda/lambda.cmx \
     lambda/debuginfo.cmx \
     asmcomp/printlinear.cmi
 asmcomp/printlinear.cmi : \
@@ -2469,6 +2483,7 @@ asmcomp/printmach.cmo : \
     asmcomp/proc.cmi \
     asmcomp/printcmm.cmi \
     asmcomp/mach.cmi \
+    lambda/lambda.cmi \
     asmcomp/interval.cmi \
     lambda/debuginfo.cmi \
     utils/config.cmi \
@@ -2483,6 +2498,7 @@ asmcomp/printmach.cmx : \
     asmcomp/proc.cmx \
     asmcomp/printcmm.cmx \
     asmcomp/mach.cmx \
+    lambda/lambda.cmx \
     asmcomp/interval.cmx \
     lambda/debuginfo.cmx \
     utils/config.cmx \
@@ -6022,7 +6038,6 @@ toplevel/opttopstart.cmx : \
     toplevel/opttopmain.cmx
 toplevel/topdirs.cmo : \
     utils/warnings.cmi \
-    typing/typetexp.cmi \
     typing/types.cmi \
     toplevel/trace.cmi \
     toplevel/toploop.cmi \
@@ -6051,7 +6066,6 @@ toplevel/topdirs.cmo : \
     toplevel/topdirs.cmi
 toplevel/topdirs.cmx : \
     utils/warnings.cmx \
-    typing/typetexp.cmx \
     typing/types.cmx \
     toplevel/trace.cmx \
     toplevel/toploop.cmx \

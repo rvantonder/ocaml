@@ -45,6 +45,8 @@ Working version
 - #7924: Use a variant instead of an int in Bad_variance exception
   (Rian Douglas, review by Gabriel Scherer)
 
+- #8890: in -dtimings output, show time spent in C linker clearly
+  (Valentin Gatien-Baron)
 
 ### Code generation and optimizations:
 
@@ -82,6 +84,12 @@ Working version
 - #8630: Use abort() instead of exit(2) in caml_fatal_error, and add
   the new hook caml_fatal_error_hook.
   (Jacques-Henri Jourdan, review by Xavier Leroy)
+
+- #8713: Introduce a state table in the runtime to contain the global variables
+   which must be duplicated for each domain in the multicore runtime.
+   (KC Sivaramakrishnan and Stephen Dolan, compatibility header hacking by
+    David Allsopp, review by David Allsopp, Alain Frisch, Nicolas Ojeda Bar,
+    Gabriel Scherer and Damien Doligez)
 
 ### Tools:
 
@@ -122,8 +130,16 @@ Working version
 
 ### Compiler user-interface and warnings:
 
-    #8833: Hint for (type) redefinitions in toplevel session
-    (Florian Angeletti, review by Gabriel Scherer)
+- #8833: Hint for (type) redefinitions in toplevel session
+  (Florian Angeletti, review by Gabriel Scherer)
+
+- #2127: Refactor lookup functions
+  Included observable changes:
+    - makes the location of usage warnings and alerts for constructors more
+      precise
+    - don't warn about a constructor never being used to build values when it
+      has been defined as private
+  (Leo White, review by Thomas Refis)
 
 ### Build system:
 
